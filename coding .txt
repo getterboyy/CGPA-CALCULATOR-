@@ -1,0 +1,58 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+int main() {
+  int num_courses;
+  cout << "Enter the number of courses: ";
+  cin >> num_courses;
+
+  string course_names[num_courses];
+  int course_units[num_courses];
+  float grade_points[num_courses];
+  float total_grade_points = 0.0;
+  int total_course_units = 0;
+
+  for (int i = 0; i < num_courses; i++) {
+    cout << "Enter name of course " << i+1 << ": ";
+    cin >> course_names[i];
+
+    cout << "Enter number of units for " << course_names[i] << ": ";
+    cin >> course_units[i];
+
+    cout << "Enter grade (A, AB, B, BC, C, CD, D, E, F) for " << course_names[i] << ": ";
+    string grade;
+    cin >> grade;
+
+    if (grade == "A") {
+      grade_points[i] = 4.0;
+    } else if (grade == "AB") {
+      grade_points[i] = 3.5;
+    } else if (grade == "B") {
+      grade_points[i] = 3.25;
+    } else if (grade == "BC") {
+      grade_points[i] = 3.0;
+    } else if (grade == "C") {
+      grade_points[i] = 2.75;
+    } else if (grade == "CD") {
+      grade_points[i] = 2.5;
+    } else if (grade == "D") {
+      grade_points[i] = 2.25;
+    } else if (grade == "E") {
+      grade_points[i] = 2.0;
+    } else if (grade == "F") {
+      grade_points[i] = 0.0;
+    } else {
+      cout << "Invalid grade entered. Please try again." << endl;
+      i--;
+    }
+
+    total_grade_points += grade_points[i] * course_units[i];
+    total_course_units += course_units[i];
+  }
+
+  float cgpa = total_grade_points / total_course_units;
+  cout << "Your CGPA is: " << cgpa << endl;
+
+  return 0;
+}
